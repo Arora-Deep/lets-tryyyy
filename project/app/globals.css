@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 97%;    /* Slightly off-white with blue tint */
+    --foreground: 240 10% 3.9%;
+    --card: 220 25% 97%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 220 25% 97%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%;    /* Blue */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 280 84% 60%;  /* Purple */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 25% 94%;      /* Slightly darker muted */
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 315 85% 60%;     /* Pink */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 25% 90%;     /* Adjusted border color */
+    --input: 220 25% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 0 0% 95%;
+    --card: 224 71% 4%;
+    --card-foreground: 0 0% 95%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 221 83% 53%;    /* Blue */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 280 84% 60%;  /* Purple */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 224 71% 75%;
+    --accent: 315 85% 60%;     /* Pink */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Challenge Card */
+.challenge-card {
+  @apply relative p-8 rounded-3xl;
+  background: linear-gradient(135deg, #4338ca10, #3b82f610);
+  border: 1px solid rgba(67, 56, 202, 0.1);
+}
+
+.challenge-card h3 {
+  @apply text-blue-600 font-bold text-2xl mb-4;
+}
+
+.challenge-card .impact {
+  @apply text-blue-600/80;
+}
+
+/* Solution Card */
+.solution-card {
+  @apply relative p-8 rounded-3xl;
+  background: linear-gradient(135deg, #7e22ce10, #d946ef10);
+  border: 1px solid rgba(126, 34, 206, 0.1);
+}
+
+.solution-card h3 {
+  @apply text-purple-600 font-bold text-2xl mb-4;
+}
+
+.solution-card .result {
+  @apply text-purple-600/80;
+}
+
+/* Card Icons */
+.card-icon {
+  @apply w-12 h-12 rounded-xl flex items-center justify-center mb-6;
+}
+
+.challenge-icon {
+  @apply bg-blue-50 text-blue-600;
+}
+
+.solution-icon {
+  @apply bg-purple-50 text-purple-600;
+}
+
+/* Arrow Connector */
+.arrow-connector {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 
+         rounded-full bg-white shadow-lg flex items-center justify-center z-10;
+}
+
+.arrow-connector svg {
+  @apply w-6 h-6 text-gray-400;
+}
+
+/* Card Hover Effects */
+.challenge-card:hover, .solution-card:hover {
+  transform: translateY(-4px);
+  transition: transform 0.3s ease;
+}
+
+.challenge-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(67, 56, 202, 0.1);
+}
+
+.solution-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(126, 34, 206, 0.1);
+}
+
+/* Additional Styles */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, #3B82F6, #7B68EE, #FF69B4);
+}
+
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.gradient-border {
+  background: linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+              linear-gradient(to right, #3B82F6, #7B68EE, #FF69B4) border-box;
+  border: 2px solid transparent;
+}
+
+.shadow-glow {
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.1),
+    0 0 40px rgba(123, 104, 238, 0.05),
+    0 0 60px rgba(255, 105, 180, 0.025);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #3B82F6, #7B68EE, #FF69B4);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2),
+                0 0 40px rgba(123, 104, 238, 0.1),
+                0 0 60px rgba(255, 105, 180, 0.05);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3),
+                0 0 60px rgba(123, 104, 238, 0.15),
+                0 0 90px rgba(255, 105, 180, 0.075);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
